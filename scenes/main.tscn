@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://51bupjfkn8d0"]
 
-[ext_resource type="PackedScene" uid="uid://ca6id1c57nqu5" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://jym00tuoxqch" path="res://scenes/rogue_hooded.tscn" id="1_o5qli"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sgp6g"]
 size = Vector3(15, 2, 60)
@@ -16,8 +16,8 @@ size = Vector3(2, 10, 10)
 
 [node name="Main" type="Node"]
 
-[node name="Player" parent="." instance=ExtResource("1_o5qli")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 8)
+[node name="Rogue_Hooded" parent="." instance=ExtResource("1_o5qli")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.50987, 8.2483)
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -16)
