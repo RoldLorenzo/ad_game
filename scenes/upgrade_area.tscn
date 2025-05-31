@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://ys4mt3vjts4o"]
+
+[ext_resource type="Script" uid="uid://4qldsoac1dc4" path="res://scripts/upgrade_area.gd" id="1_w12fs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eor7y"]
+size = Vector3(7.5, 4, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rlo4u"]
+transparency = 1
+albedo_color = Color(0, 0.662745, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rbq5u"]
+size = Vector3(7.5, 4, 0.1)
+
+[node name="UpgradeArea" type="Area3D"]
+script = ExtResource("1_w12fs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_eor7y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_rlo4u")
+mesh = SubResource("BoxMesh_rbq5u")
