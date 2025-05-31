@@ -1,9 +1,12 @@
 extends CharacterBody3D
+class_name Player
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 
 @export var speed = 10
 @export var bullet_scene: PackedScene
+@export var min_fire_rate: float = 0.2
+@export var max_speed: int = 100
 
 func _ready() -> void:
 	pass
@@ -24,6 +27,13 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = direction * speed
 	move_and_slide()
+
+func upgrade_fire_rate(time_off: float) -> void:
+	var new_time = $ShootTimer.wait_time - time_off
+	$ShootTimer.wait_time = max(new_time, min_fire_rate)
+
+func upgrade_speed(increase: int) -> void:
+	speed = min(speed + increase, max_speed)
 
 func _on_shoot_timer_timeout() -> void:
 	var bullet = bullet_scene.instantiate()
