@@ -3,36 +3,19 @@ class_name Player
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @export var bullet_scene: PackedScene
-const max_speed = 100
-const min_speed = 5
+const max_speed: int = 100
+const min_speed: float = 5.0
 const max_fire_rate_cooldown = 5
 const min_fire_rate_cooldown = 0.2
 
 @export var speed = 10 :
 	set(value):
-		if value > max_speed:
-			speed = max_speed
-		elif value < min_speed:
-			speed = min_speed
-		else:
-			speed = value
+		speed = clampi(value, min_speed, max_speed)
 
 @export var fire_rate = 2 :
 	set(value):
-		print(value)
-		
-		if value > max_fire_rate_cooldown:
-			fire_rate = max_fire_rate_cooldown
-		elif value < min_fire_rate_cooldown:
-			fire_rate = min_fire_rate_cooldown
-		else:
-			fire_rate = value
-		
-		print(fire_rate)
+		fire_rate = clampf(value, min_fire_rate_cooldown, max_fire_rate_cooldown)
 		$ShootTimer.wait_time = fire_rate
-
-func _ready() -> void:
-	pass
 
 func _physics_process(delta: float) -> void:
 	var direction = Vector3.ZERO
