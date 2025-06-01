@@ -42,9 +42,9 @@ func _on_body_entered(body: Node3D) -> void:
 		var player: Player = body
 		
 		if upgrade == "Fire Rate":
-			player.upgrade_fire_rate(value * 0.1)
+			player.fire_rate -= value * 0.1
 		elif upgrade == "Speed":
-			player.upgrade_speed(value)
+			player.speed += value
 		
 		call_deferred("free")
 
