@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://51bupjfkn8d0"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_0wfyh"]
+[ext_resource type="Script" uid="uid://esxywh6482nq" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://jym00tuoxqch" path="res://scenes/rogue_hooded.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://ys4mt3vjts4o" path="res://scenes/upgrade_area.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://danpm1iwkgo1u" path="res://scenes/bullet.tscn" id="4_jyhfs"]

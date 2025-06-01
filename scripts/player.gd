@@ -31,7 +31,6 @@ func _physics_process(delta: float) -> void:
 func upgrade_fire_rate(time_off: float) -> void:
 	var new_time = $ShootTimer.wait_time - time_off
 	$ShootTimer.wait_time = max(new_time, min_fire_rate)
-	print(new_time)
 
 func upgrade_speed(increase: int) -> void:
 	speed = min(speed + increase, max_speed)
