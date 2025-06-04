@@ -31,7 +31,8 @@ func _physics_process(delta: float) -> void:
 func _on_hit_area_area_entered(area: Area3D) -> void:
 	if area is Bullet:
 		$DeathTimer.start()
-		state_machine.travel("Death_C_Skeletons")
+		#state_machine.travel("Death_C_Skeletons")
+		%PhysicalBoneSimulator3D.hit()
 		direction = Vector3.ZERO
 		area.queue_free()
 		$HitArea.queue_free()
