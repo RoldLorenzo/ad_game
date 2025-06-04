@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://51bupjfkn8d0"]
+[gd_scene load_steps=10 format=3 uid="uid://51bupjfkn8d0"]
 
 [ext_resource type="Script" uid="uid://esxywh6482nq" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://jym00tuoxqch" path="res://scenes/rogue_hooded.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://ys4mt3vjts4o" path="res://scenes/upgrade_area.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://danpm1iwkgo1u" path="res://scenes/bullet.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://c4u3e55tfsuj0" path="res://scenes/skeleton.tscn" id="6_tefeu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sgp6g"]
 size = Vector3(15, 2, 60)
@@ -20,6 +21,7 @@ size = Vector3(2, 10, 10)
 [node name="Main" type="Node"]
 script = ExtResource("1_0wfyh")
 upgrade_area_scene = ExtResource("2_sugp2")
+enemy_skeleton_scene = ExtResource("6_tefeu")
 
 [node name="Rogue_Hooded" parent="." instance=ExtResource("1_o5qli")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.52602, 8.29757)
@@ -32,6 +34,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -16)
 shape = SubResource("BoxShape3D_sgp6g")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.10197, 0, 0, 0)
 mesh = SubResource("BoxMesh_o5qli")
 
 [node name="LeftWall" type="StaticBody3D" parent="."]
