@@ -28,14 +28,12 @@ func _physics_process(delta: float) -> void:
 	
 	if not $VisibleOnScreenNotifier3D.is_on_screen(): free()
 
-func _on_hit_area_area_entered(area: Area3D) -> void:
-	if area is Bullet:
-		$DeathTimer.start()
-		#state_machine.travel("Death_C_Skeletons")
-		%PhysicalBoneSimulator3D.hit()
-		direction = Vector3.ZERO
-		area.queue_free()
-		$HitArea.queue_free()
-
 func _on_death_timer_timeout() -> void:
 	queue_free()
+
+func _on_health_component_die() -> void:
+	$DeathTimer.start()
+	#state_machine.travel("Death_C_Skeletons")
+	%PhysicalBoneSimulator3D.hit()
+	direction = Vector3.ZERO
+	$HitBoxComponent.queue_free()

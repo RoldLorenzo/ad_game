@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://danpm1iwkgo1u"]
+[gd_scene load_steps=6 format=3 uid="uid://danpm1iwkgo1u"]
 
 [ext_resource type="Script" uid="uid://duqikpt26knbf" path="res://scripts/bullet.gd" id="1_mkf8s"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_y25gk"]
-size = Vector3(0.5, 0.5, 1)
+[ext_resource type="PackedScene" uid="uid://7fwqb1uvmafm" path="res://scenes/components/hurt_box_component.tscn" id="2_y25gk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l5glv"]
 albedo_color = Color(1, 1, 0, 1)
@@ -11,12 +9,19 @@ albedo_color = Color(1, 1, 0, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_eoqba"]
 size = Vector3(0.5, 0.5, 1)
 
-[node name="Bullet" type="Area3D"]
-script = ExtResource("1_mkf8s")
+[sub_resource type="BoxShape3D" id="BoxShape3D_y25gk"]
+size = Vector3(0.5, 0.5, 1)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_y25gk")
+[node name="Bullet" type="Node3D"]
+script = ExtResource("1_mkf8s")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_l5glv")
 mesh = SubResource("BoxMesh_eoqba")
+
+[node name="HurtBoxComponent" parent="." instance=ExtResource("2_y25gk")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBoxComponent"]
+shape = SubResource("BoxShape3D_y25gk")
+
+[connection signal="area_entered" from="HurtBoxComponent" to="." method="_on_hurt_box_component_area_entered"]

@@ -46,9 +46,4 @@ func _on_body_entered(body: Node3D) -> void:
 		elif upgrade == "Speed":
 			player.speed += value
 		
-		call_deferred("free")
-
-func _on_area_entered(area: Area3D) -> void:
-	if area is Bullet:
-		area.free()
-		value += 1
+		queue_free()
