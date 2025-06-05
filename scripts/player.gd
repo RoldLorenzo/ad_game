@@ -1,6 +1,9 @@
 extends CharacterBody3D
 class_name Player
 
+# Emmitted whenever an attribute (like speed or firerate) gets changed.
+signal attribute_changed(attribute_name: String, new_value: float)
+
 @onready var animation_tree: AnimationTree = $AnimationTree
 @export var bullet_scene: PackedScene
 const max_speed: int = 100
@@ -11,11 +14,17 @@ const min_fire_rate_cooldown = 0.2
 @export var speed = 10 :
 	set(value):
 		speed = clampi(value, min_speed, max_speed)
+		attribute_changed.emit("speed", speed)
 
 @export var fire_rate = 2 :
 	set(value):
 		fire_rate = clampf(value, min_fire_rate_cooldown, max_fire_rate_cooldown)
 		$ShootTimer.wait_time = fire_rate
+		attribute_changed.emit("fire_rate", fire_rate)
+
+func _ready() -> void:
+	attribute_changed.emit("speed", speed)
+	attribute_changed.emit("fire_rate", fire_rate)
 
 func _physics_process(delta: float) -> void:
 	var direction = Vector3.ZERO

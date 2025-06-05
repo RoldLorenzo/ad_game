@@ -44,3 +44,9 @@ func spawn_skeletons(amount: int) -> void:
 		var skeleton = enemy_skeleton_scene.instantiate()
 		skeleton.position = spawn_position
 		self.add_child(skeleton)
+
+func _on_rogue_hooded_attribute_changed(attribute_name: String, new_value: float) -> void:
+	if attribute_name == "speed":
+		$HUD/PlayerSpeed.text = "Speed: " + str(new_value)
+	elif attribute_name == "fire_rate":
+		$HUD/PlayerFireRate.text = "Fire Rate: " + str(new_value)
