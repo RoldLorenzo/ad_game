@@ -36,6 +36,8 @@ func _on_health_component_die() -> void:
 	#state_machine.travel("Death_C_Skeletons")
 	%PhysicalBoneSimulator3D.hit()
 	direction = Vector3.ZERO
+	
+	$HealthBarComponent.queue_free()
 	$HitBoxComponent.queue_free()
 
 func _on_hit_box_component_body_entered(body: Node3D) -> void:
