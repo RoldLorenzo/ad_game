@@ -10,6 +10,8 @@ const max_speed: int = 100
 const min_speed: float = 5.0
 const max_fire_rate_cooldown = 5
 const min_fire_rate_cooldown = 0.2
+const min_damage = 0.5
+const max_damage = 100
 
 @export var speed = 10 :
 	set(value):
@@ -22,9 +24,15 @@ const min_fire_rate_cooldown = 0.2
 		$ShootTimer.wait_time = fire_rate
 		attribute_changed.emit("fire_rate", fire_rate)
 
+@export var damage = 1.0 :
+	set(value):
+		damage = clampf(value, min_damage, max_damage)
+		attribute_changed.emit("damage", damage)
+
 func _ready() -> void:
 	attribute_changed.emit("speed", speed)
 	attribute_changed.emit("fire_rate", fire_rate)
+	attribute_changed.emit("damage", damage)
 
 func _physics_process(delta: float) -> void:
 	var direction = Vector3.ZERO
@@ -47,5 +55,6 @@ func _on_shoot_timer_timeout() -> void:
 	var bullet = bullet_scene.instantiate()
 	
 	bullet.position = $BulletSpawnPos.global_position
+	bullet.damage = damage
 	
 	get_parent().add_child(bullet)

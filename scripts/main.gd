@@ -50,3 +50,5 @@ func _on_rogue_hooded_attribute_changed(attribute_name: String, new_value: float
 		$HUD/PlayerSpeed.text = "Speed: " + str(new_value)
 	elif attribute_name == "fire_rate":
 		$HUD/PlayerFireRate.text = "Fire Rate: " + str(new_value)
+	elif attribute_name == "damage":
+		$HUD/PlayerDamage.text = "Damage: " + str(new_value)

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://gqtrd6fw3kop"]
+
+[ext_resource type="Script" uid="uid://dp5254hy3x2lf" path="res://scripts/component_scripts/health_bar_component.gd" id="1_pk0ki"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_meeqv"]
+viewport_path = NodePath("SubViewport")
+
+[node name="HealthBarComponent" type="Node3D"]
+script = ExtResource("1_pk0ki")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = SubResource("ViewportTexture_meeqv")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(300, 50)
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport"]
+offset_right = 300.0
+offset_bottom = 50.0
+show_percentage = false

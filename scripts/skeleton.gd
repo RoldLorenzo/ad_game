@@ -37,3 +37,7 @@ func _on_health_component_die() -> void:
 	%PhysicalBoneSimulator3D.hit()
 	direction = Vector3.ZERO
 	$HitBoxComponent.queue_free()
+
+func _on_hit_box_component_body_entered(body: Node3D) -> void:
+	if body is Player:
+		queue_free()

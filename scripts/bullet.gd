@@ -2,6 +2,10 @@ extends Node3D
 class_name Bullet
 
 @export var speed = 50
+var damage:
+	set(value):
+		damage = value
+		$HurtBoxComponent.damage = value
 
 func _physics_process(delta: float) -> void:
 	position.z -= speed * delta
