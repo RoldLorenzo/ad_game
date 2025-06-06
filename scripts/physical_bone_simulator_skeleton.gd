@@ -3,7 +3,7 @@ extends PhysicalBoneSimulator3D
 @onready var bone_head: PhysicalBone3D = $"Physical Bone Head"
 var push := 0
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if push > 0:
 		bone_head.linear_velocity = Vector3.MODEL_REAR * push
 

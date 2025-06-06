@@ -12,6 +12,7 @@ size = Vector3(7.5, 4, 0.1)
 viewport_path = NodePath("SubViewport")
 
 [node name="UpgradeArea" type="Area3D"]
+collision_mask = 2
 script = ExtResource("1_w12fs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

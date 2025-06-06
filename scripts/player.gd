@@ -13,18 +13,18 @@ const min_fire_rate_cooldown = 0.2
 const min_damage = 0.5
 const max_damage = 100
 
-@export var speed = 10 :
+@export var speed: float = 10.0 :
 	set(value):
-		speed = clampi(value, min_speed, max_speed)
+		speed = clampf(value, min_speed, max_speed)
 		attribute_changed.emit("speed", speed)
 
-@export var fire_rate = 2 :
+@export var fire_rate: float = 2.0 :
 	set(value):
 		fire_rate = clampf(value, min_fire_rate_cooldown, max_fire_rate_cooldown)
 		$ShootTimer.wait_time = fire_rate
 		attribute_changed.emit("fire_rate", fire_rate)
 
-@export var damage = 1.0 :
+@export var damage: float = 1.0 :
 	set(value):
 		damage = clampf(value, min_damage, max_damage)
 		attribute_changed.emit("damage", damage)
@@ -34,7 +34,7 @@ func _ready() -> void:
 	attribute_changed.emit("fire_rate", fire_rate)
 	attribute_changed.emit("damage", damage)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var direction = Vector3.ZERO
 	animation_tree.set("parameters/Transition/transition_request", "Run")
 	
