@@ -6,12 +6,12 @@ signal attribute_changed(attribute_name: String, new_value: float)
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @export var bullet_scene: PackedScene
-const max_speed: int = 100
+const max_speed: float = 100.0
 const min_speed: float = 5.0
-const max_fire_rate_cooldown = 5
-const min_fire_rate_cooldown = 0.2
-const min_damage = 0.5
-const max_damage = 100
+const max_fire_rate_cooldown: float = 5.0
+const min_fire_rate_cooldown: float = 0.2
+const min_damage: float = 0.5
+const max_damage: float = 100.0
 
 @export var speed: float = 10.0 :
 	set(value):
